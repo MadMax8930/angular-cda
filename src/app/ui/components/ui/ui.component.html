@@ -3,9 +3,12 @@
     <ng-content select=".tr-header"></ng-content>
     <!-- <button (click)="toggle()">Open/Close</button> -->
     <span (click)="toggle()">
-        <ng-content *ngIf="!isNavOpen; else elseBtn" select=".tr-btn-open"></ng-content>
+        <ng-container *ngIf="!isNavOpen; then openState else closeState"></ng-container>
     </span>
-    <ng-template #elseBtn>
+    <ng-template #openState>
+        <ng-content select=".tr-btn-open"></ng-content>
+    </ng-template>
+    <ng-template #closeState>
         <ng-content select=".tr-btn-close"></ng-content>
     </ng-template>
 </header>
