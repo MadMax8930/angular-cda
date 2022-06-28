@@ -8,10 +8,6 @@ import { PageListOrdersComponent } from './orders/pages/page-list-orders/page-li
 
 const routes: Routes = [
   { path: "", redirectTo: "sign-in", pathMatch: "full" },
-  { path: "sign-in", component: PageSignInComponent },
-  { path: "sign-up", component: PageSignUpComponent },
-  { path: "reset", component: PageResetPasswordComponent },
-  { path: "forgot", component: PageForgotPasswordComponent },
   // { path: "orders", component: PageListOrdersComponent },
   { 
     path: "orders",
