@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, Subject, tap } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { environment } from 'src/environments/environment';
 
@@ -19,7 +19,18 @@ export class OrdersService {
   private behaviorSubject$ = new BehaviorSubject<string>("data Init");
 
   constructor(private http: HttpClient) {
-    this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`);
+    // this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+    //   map((listObjet: any[]) => listObjet.map((objet: any) => new Order(objet)))
+    // );
+
+    this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+      tap((listObjet: any[]) => console.log('AVANT : ', listObjet)),
+      map((listObjet: any[]) => {
+        const listOrder = listObjet.map((objet: any) => new Order(objet));
+        console.log('APRES : ', listOrder);
+        return listOrder;
+      })
+    );
 
     // this.collection$.subscribe(() => {})// a l'ancienne
     // this.collection$.subscribe({

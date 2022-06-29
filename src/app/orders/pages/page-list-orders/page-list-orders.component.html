@@ -6,19 +6,15 @@
             <td>{{ order.tjmHt }}</td>
             <td>{{ order.nbJours }}</td>
             <td>{{ order.tva }}</td>
+            <!-- <td>{{ calculTotalHt(order) }}</td>
+            <td>{{ calculTotalTtc(order) }}</td> -->
+            <td>{{ order | total : false }}</td> <!-- prix HT-->
+            <td>{{ order | total : true }}</td> <!-- prix TTC-->
             <td>{{ order.typePresta }}</td>
             <td>{{ order.client }}</td>
             <td>{{ order.state }}</td>
         </tr>
     </app-table-light>
     <app-btn></app-btn>
-
-    <app-table-light
-        [headers]="usersHeaders">
-        <tr *ngFor="let user of users">
-            <td>{{ user.name }}</td>
-            <td>{{ user.age }}</td>
-        </tr>
-    </app-table-light>
 </app-template-full-width>
 <!-- <button (click)="changeTitle()">ChangeTitle</button> -->

@@ -13,27 +13,9 @@ export class PageListOrdersComponent implements OnInit {
   public parentHeaders: string[];
   public monTitre: {label: string};
 
-  //test
-  public usersHeaders = ['Name', 'Age'];
-  public users = [
-    {
-      name : "Coco",
-      age: 1
-    },
-    {
-      name : "Coco2",
-      age: 2
-    }
-    ,
-    {
-      name : "Coco3",
-      age: 3
-    }
-  ]
-
   constructor(private ordersService: OrdersService) {
     this.monTitre = {label: "Liste des commandes"};
-    this.parentHeaders = ["TjmHt", "NbJours", "TVA", "Type Presta", "Client", "State"];
+    this.parentHeaders = ["TjmHt", "NbJours", "TVA", "TotalHt", "TotalTtc", "Type Presta", "Client", "State"];
    }
 
   ngOnInit(): void {
@@ -52,6 +34,17 @@ export class PageListOrdersComponent implements OnInit {
     //respect du principe d'immuabilité 
     this.monTitre = {label: 'Un Autre titre'};
 
+  }
+
+  calculTotalHt(order: Order): number {
+    console.error("Call CalculTotalHt");
+    let resultHt = order.tjmHt * order.nbJours;
+    return resultHt;
+  }
+
+  calculTotalTtc(order: Order): number {
+    let resultTtc = order.tjmHt * (1 + order.tva/100)   * order.nbJours;
+    return resultTtc;
   }
 
   ngDoCheck(): void {
