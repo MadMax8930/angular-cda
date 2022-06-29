@@ -10,8 +10,11 @@ import { OrdersService } from '../../services/orders.service';
 })
 export class PageListOrdersComponent implements OnInit {
   public collection!: Order[];
+  public monTitre: {label: string};
 
-  constructor(private ordersService: OrdersService) { }
+  constructor(private ordersService: OrdersService) {
+    this.monTitre = {label: "Liste des commandes"};
+   }
 
   ngOnInit(): void {
     this.ordersService.collection$.subscribe(
@@ -20,6 +23,19 @@ export class PageListOrdersComponent implements OnInit {
         console.log(this.collection);
       } 
     )
+  }
+
+  changeTitle() {
+    // en JS il n'y a aucun changement car pas de respect du principe d'immuabilité
+    //this.monTitre.label = 'Un Autre titre';
+
+    //respect du principe d'immuabilité 
+    this.monTitre = {label: 'Un Autre titre'};
+
+  }
+
+  ngDoCheck(): void {
+    console.warn('Check PAGE LIST ORDER')
   }
 
 }

@@ -12,4 +12,8 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngDoCheck(): void {
+    console.warn('Check FOOTER')
+  }
+
 }

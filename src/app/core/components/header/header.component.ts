@@ -12,4 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngDoCheck(): void {
+    console.warn('Check HEADER')
+  }
+
 }

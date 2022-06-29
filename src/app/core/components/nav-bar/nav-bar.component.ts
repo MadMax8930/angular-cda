@@ -11,5 +11,8 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngDoCheck(): void {
+    console.warn('Check NAV')
+  }
 
 }
