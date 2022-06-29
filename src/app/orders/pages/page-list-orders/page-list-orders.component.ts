@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -14,6 +15,7 @@ export class PageListOrdersComponent implements OnInit {
   public parentHeaders: string[];
   public monTitre: {label: string};
   public testSubject$!: Subject<string>;
+  public listStateOrder = StateOrder;
 
   constructor(private ordersService: OrdersService) {
     this.monTitre = {label: "Liste des commandes"};
@@ -54,6 +56,14 @@ export class PageListOrdersComponent implements OnInit {
   calculTotalTtc(order: Order): number {
     let resultTtc = order.tjmHt * (1 + order.tva/100)   * order.nbJours;
     return resultTtc;
+  }
+
+  onChangeState(order: Order, selectedState: any) {
+    console.log(selectedState.target.value);
+    
+    this.ordersService.changeState(order, selectedState.target.value).subscribe(
+      (updatedOrder: Order) => order = updatedOrder
+    )
   }
 
   ngDoCheck(): void {

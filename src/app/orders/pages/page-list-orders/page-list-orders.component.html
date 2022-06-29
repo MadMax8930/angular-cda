@@ -3,16 +3,27 @@
     <app-table-light
         [headers]="parentHeaders">
         <tr *ngFor="let order of parentCollection">
-            <td>{{ order.tjmHt }}</td>
+            <td>{{ order.tjmHt | currency }}</td>
             <td>{{ order.nbJours }}</td>
             <td>{{ order.tva }}</td>
             <!-- <td>{{ calculTotalHt(order) }}</td>
             <td>{{ calculTotalTtc(order) }}</td> -->
-            <td>{{ order | total : false }}</td> <!-- prix HT-->
-            <td>{{ order | total : true }}</td> <!-- prix TTC-->
+            <td>{{ order | total : false | currency }}</td> <!-- prix HT-->
+            <td>{{ order | total : true | currency }}</td> <!-- prix TTC-->
             <td>{{ order.typePresta }}</td>
             <td>{{ order.client }}</td>
-            <td>{{ order.state }}</td>
+            <!-- <td>{{ order.state }}</td> -->
+            <td>
+                <select (change)="onChangeState(order, $event)">
+                    <option value="null" disabled selected>Choisir un état</option>
+                    <option 
+                        *ngFor="let state of listStateOrder | keyvalue"
+                        [value]="state.key"
+                        [selected]="state.value === order.state">
+                        {{ state.value }}
+                    </option>
+                </select>
+            </td>
         </tr>
     </app-table-light>
     <app-btn></app-btn>

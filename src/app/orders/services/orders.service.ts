@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, Subject, tap } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { environment } from 'src/environments/environment';
 
@@ -74,5 +75,16 @@ export class OrdersService {
     
     console.warn('Next');
     this.behaviorSubject$.next('Second message');
+  }
+
+  public changeState(order: Order, state: StateOrder): Observable<Order> {
+    const orderToUpdate = new Order({...order, state: state});
+    return this.update(orderToUpdate);
+  }
+  
+  public update(order: Order): Observable<Order> {
+    return this.http.put<Order>(`${this.urlApi}/orders/${order.id}`, order).pipe(
+      map((object: any) => new Order({...object}))
+    );
   }
 }
