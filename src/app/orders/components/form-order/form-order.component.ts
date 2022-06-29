@@ -33,4 +33,8 @@ export class FormOrderComponent implements OnInit, OnChanges {
     })
   }
 
+  onSubmit(){
+    this.submitted.emit(this.formAddOrder.value);
+  }
+
 }

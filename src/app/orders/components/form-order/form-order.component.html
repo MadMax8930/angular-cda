@@ -1,6 +1,6 @@
 {{ formAddOrder.value | json }}
 
-<form [formGroup]="formAddOrder" *ngIf="formAddOrder">
+<form [formGroup]="formAddOrder" *ngIf="formAddOrder" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
         <label for="typePresta">type</label>
