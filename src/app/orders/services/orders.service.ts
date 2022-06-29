@@ -15,7 +15,7 @@ export class OrdersService {
   private observable$ = new Observable((obs) => obs.next(Math.random()));
 
   //Observable chaud
-  private subject$ = new Subject<string>();
+  public subject$ = new Subject<string>();
   private behaviorSubject$ = new BehaviorSubject<string>("data Init");
 
   constructor(private http: HttpClient) {
