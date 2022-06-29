@@ -61,14 +61,24 @@
       "id": 13
     },
     {
-      "typePresta": "test",
-      "client": "test",
-      "nbJours": 1,
       "tjmHt": 400,
+      "nbJours": 1,
       "tva": 20,
       "state": "OPTION",
+      "typePresta": "test",
+      "client": "test",
       "comment": "test",
       "id": 14
+    },
+    {
+      "typePresta": "testt",
+      "client": null,
+      "nbJours": 2,
+      "tjmHt": 500,
+      "tva": 20,
+      "state": "OPTION",
+      "comment": "ddd",
+      "id": 15
     }
   ],
   "clients": [

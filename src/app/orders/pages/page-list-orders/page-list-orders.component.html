@@ -12,7 +12,7 @@
             <td [appState]="order.state">
                 <select (change)="onChangeState(order, $event)">
                     <option value="null" disabled selected>Choisir un état</option>
-                    <option 
+                    <option
                         *ngFor="let state of listStateOrder | keyvalue"
                         [value]="state.key"
                         [selected]="state.value === order.state">
@@ -22,14 +22,14 @@
             </td>
         </tr>
     </app-table-light>
-    <!-- <app-btn 
-        [label]="'Ajouter une commande'" 
+    <!-- <app-btn
+        [label]="'Ajouter une commande'"
         [route]="'add'">
     </app-btn>     -->
     <!-- OU -->
-    <app-btn 
-        label="Ajouter une commande" 
+    <app-btn
+        label="Ajouter une commande"
         route="add">
-    </app-btn> 
+    </app-btn>
 </app-template-full-width>
 
