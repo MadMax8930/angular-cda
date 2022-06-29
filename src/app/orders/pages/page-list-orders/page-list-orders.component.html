@@ -13,7 +13,11 @@
             <td>{{ order.typePresta }}</td>
             <td>{{ order.client }}</td>
             <!-- <td>{{ order.state }}</td> -->
-            <td>
+            <!-- <td [ngClass]="{
+                'state-canceled': order.state === 'CANCELED',
+                'state-option': order.state === 'OPTION',
+                'state-confirmed': order.state === 'CONFIRMED'}"> -->
+            <td [appState]="order.state">
                 <select (change)="onChangeState(order, $event)">
                     <option value="null" disabled selected>Choisir un état</option>
                     <option 

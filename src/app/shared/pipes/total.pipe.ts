@@ -7,7 +7,6 @@ import { Order } from 'src/app/core/models/order';
 export class TotalPipe implements PipeTransform {
 
   transform(item: Order, isTtc?: boolean): number {
-    console.error("Call PIPE TOTAL", item);
     if(isTtc) {
       // return order.tjmHt * (1 + order.tva/100) * order.nbJours; // V1
       return item.totalTtc();
