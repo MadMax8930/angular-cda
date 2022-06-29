@@ -13,6 +13,24 @@ export class PageListOrdersComponent implements OnInit {
   public parentHeaders: string[];
   public monTitre: {label: string};
 
+  //test
+  public usersHeaders = ['Name', 'Age'];
+  public users = [
+    {
+      name : "Coco",
+      age: 1
+    },
+    {
+      name : "Coco2",
+      age: 2
+    }
+    ,
+    {
+      name : "Coco3",
+      age: 3
+    }
+  ]
+
   constructor(private ordersService: OrdersService) {
     this.monTitre = {label: "Liste des commandes"};
     this.parentHeaders = ["TjmHt", "NbJours", "TVA", "Type Presta", "Client", "State"];
